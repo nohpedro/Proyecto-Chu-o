@@ -51,11 +51,11 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_spectacular',
     'user',
+    'conference',
     'item',
     'loan',
     #'pages',
     'django_filters',
-
 ]
 
 MIDDLEWARE = [
