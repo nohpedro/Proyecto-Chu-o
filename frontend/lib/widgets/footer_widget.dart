@@ -9,53 +9,52 @@ class FooterWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 650, // Aumenta la altura según sea necesario
-      padding:  const EdgeInsets.fromLTRB(0, 20, 0, 0),
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
 
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Column(
           children: [
-              Stack(
-                children: [
-                  ImageFiltered(
-                    imageFilter: ImageFilter.blur(sigmaY: 0.5, sigmaX: 0.5),
-                    child: Container(
+            Stack(
+              children: [
+                ImageFiltered(
+                  imageFilter: ImageFilter.blur(sigmaY: 0.5, sigmaX: 0.5),
+                  child: Container(
                     width: double.infinity,
-                      height: 400, // Ajusta la altura según sea necesario
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/background.png'),
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.3), // Efecto de opacidad
-                            BlendMode.darken,
-                          ),
+                    height: 400, // Ajusta la altura según sea necesario
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/background.png'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.3), // Efecto de opacidad
+                          BlendMode.darken,
                         ),
                       ),
                     ),
                   ),
-
-                  const Positioned(
-                    left: 20,
-                    bottom: 20,
-                    child: FadeInText(
-                      text: 'LABORATORIO UCB',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 10.0,
-                            color: Colors.black,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                      ),
+                ),
+                const Positioned(
+                  left: 20,
+                  bottom: 20,
+                  child: FadeInText(
+                    text: 'Proyecto CHuño',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black,
+                          offset: Offset(2.0, 2.0),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
             Expanded(
               child: Container(
                 color: Colors.black,
@@ -66,7 +65,7 @@ class FooterWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       flex: 1,
-                      fit:  FlexFit.tight,
+                      fit: FlexFit.tight,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -91,7 +90,7 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 20),
                     Flexible(
                       flex: 1,
-                      fit:  FlexFit.tight,
+                      fit: FlexFit.tight,
                       child: SocialMediaIcon(
                         icon: Icons.map,
                         label: "Ubicación",
@@ -99,13 +98,11 @@ class FooterWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 20),
-
                     const Flexible(
                       flex: 2,
                       fit: FlexFit.tight,
                       child: FadeInText(
-                        text:
-                            'En el Laboratorio de la Universidad Catolica Boliviana, estamos comprometidos con la excelencia academica y la investigacion. Nuestro Laboratorio ofrece una gama de materiales y recursos para apoyar el desarrollo de proyectos cientificos y academicos. En el Laboratorio de la Universidad Catolica',
+                        text: 'Lorem Impus',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
