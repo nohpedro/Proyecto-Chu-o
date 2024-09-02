@@ -223,7 +223,7 @@ class _CreateItemFormState extends State<CreateItemForm> {
                               categories: selectedCategories,
                               imageBytes: imageBytes);
                         },
-                        child: const Text('Crear Item'),
+                        child: const Text('Crear reunion'),
                       ),
                     ],
                   ),

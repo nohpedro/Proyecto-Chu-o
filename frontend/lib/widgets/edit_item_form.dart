@@ -48,8 +48,8 @@ class _EditItemFormState extends State<EditItemForm> {
       children: [
         StringField(
           controller: nameController,
-          hintText: 'Nombre del Item',
-          labelText: 'Nombre del Item',
+          hintText: 'Nombre de la reunion',
+          labelText: 'Nombre de la reunion',
           width: MediaQuery.of(context).size.width * 0.8,
         ),
         const SizedBox(height: 20),
@@ -76,8 +76,8 @@ class _EditItemFormState extends State<EditItemForm> {
         const SizedBox(height: 20),
         StringField(
           controller: quantityController,
-          hintText: 'Cantidad',
-          labelText: 'Cantidad',
+          hintText: 'Cantidad de personas que asistiran',
+          labelText: 'Cantidad de personas que asistiran',
           width: MediaQuery.of(context).size.width * 0.8,
         ),
         const SizedBox(height: 20),
@@ -164,7 +164,7 @@ class _EditItemFormState extends State<EditItemForm> {
             );
             widget.onFormSubmit(newItem);
           },
-          child: const Text('Actualizar Item'),
+          child: const Text('Actualizar Reunion'),
         ),
       ],
     );
