@@ -72,7 +72,7 @@ class EditItemScreenState extends State<EditItemScreen> {
       return;
     }
 
-    final pass = await SessionManager().confirmNotification(message: "Confirmar la edición de item");
+    final pass = await SessionManager().confirmNotification(message: "Confirmar la edición de conferencias");
     if(pass){
       var res = await item.update(newItem);
       if(imageBytes != null){
@@ -93,7 +93,7 @@ class EditItemScreenState extends State<EditItemScreen> {
             children: [
               const BannerWidget(
                   imageUrl: null,
-                  title: "Edición de items",
+                  title: "Edición de conferencias",
                   subtitle: "",
                   description: ""),
               Padding(

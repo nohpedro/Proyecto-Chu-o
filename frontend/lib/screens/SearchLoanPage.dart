@@ -7,7 +7,6 @@ import '../models/Loan.dart';
 import '../models/User.dart';
 
 class SearchLoanPage extends BrowsablePage {
-
   ReturnedFilter returnedFilter = ReturnedFilter();
   DateFilter fromDateFilter = DateFilter(attributeName: "Desde");
   DateFilter toDateFilter = DateFilter(attributeName: "Hasta");
@@ -20,8 +19,10 @@ class SearchLoanPage extends BrowsablePage {
   }
 
   @override
-  void onSet(){
-    Role role = SessionManager().session.user.role; ///Acceder usuario actual
+  void onSet() {
+    Role role = SessionManager().session.user.role;
+
+    ///Acceder usuario actual
     searchEnabled = role == Role.adminRole;
   }
 
@@ -31,9 +32,8 @@ class SearchLoanPage extends BrowsablePage {
   }
 
   Future<List<Loan>> _fetchItems(String? pattern) async {
-
     bool? isReturned;
-    if(returnedFilter.getSelected().isNotEmpty){
+    if (returnedFilter.getSelected().isNotEmpty) {
       isReturned = returnedFilter.getSelected().first == "Devuelto";
     }
 
@@ -43,13 +43,14 @@ class SearchLoanPage extends BrowsablePage {
     return await SessionManager.loanService.getLoanList(
       email: pattern,
       devuelto: isReturned,
-      startDate: startDate.isNotEmpty? startDate.first: null,
-      endDate: endDate.isNotEmpty? endDate.first: null,
+      startDate: startDate.isNotEmpty ? startDate.first : null,
+      endDate: endDate.isNotEmpty ? endDate.first : null,
     );
   }
 
   @override
-  Widget build(BuildContext context, SearchField searchField, FilterList filters, Widget? child) {
+  Widget build(BuildContext context, SearchField searchField,
+      FilterList filters, Widget? child) {
     String? pattern;
 
     if (searchField.value.isNotEmpty) {
@@ -60,12 +61,18 @@ class SearchLoanPage extends BrowsablePage {
       future: _fetchItems(pattern),
       builder: (BuildContext context, AsyncSnapshot<List<Loan>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator(color: Colors.white,));
+          return const Center(
+              child: CircularProgressIndicator(
+            color: Colors.white,
+          ));
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text('No se encontraron items',
-            style: TextStyle(color: Colors.white),));
+          return const Center(
+              child: Text(
+            'No se encontraron conferencias',
+            style: TextStyle(color: Colors.white),
+          ));
         } else {
           List<Loan> items = snapshot.data!;
           return Column(
@@ -78,8 +85,7 @@ class SearchLoanPage extends BrowsablePage {
                         color: Colors.white,
                         width: 1,
                       ),
-                    )
-                ),
+                    )),
                 padding: const EdgeInsets.fromLTRB(40.0, 20, 40, 20),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +109,7 @@ class SearchLoanPage extends BrowsablePage {
                       flex: 3,
                       fit: FlexFit.tight,
                       child: Text(
-                        'Fecha Préstamo',
+                        'Fecha Inicio',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w100,
@@ -118,7 +124,7 @@ class SearchLoanPage extends BrowsablePage {
                       flex: 3,
                       fit: FlexFit.tight,
                       child: Text(
-                        'Fecha Devolución',
+                        'Fecha Final',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w100,
@@ -153,10 +159,12 @@ class SearchLoanPage extends BrowsablePage {
                       padding: const EdgeInsets.all(10.0),
                       sliver: SliverList(
                         delegate: SliverChildBuilderDelegate(
-                          (context, index){
-                            return LoanCard(loan: items[index], onTap: (){
-                              _showLoanDetail(context, items[index]);
-                            });
+                          (context, index) {
+                            return LoanCard(
+                                loan: items[index],
+                                onTap: () {
+                                  _showLoanDetail(context, items[index]);
+                                });
                           },
                           childCount: items.length,
                         ),
@@ -172,13 +180,13 @@ class SearchLoanPage extends BrowsablePage {
     );
   }
 
-  void _showLoanDetail(BuildContext context, Loan loan){
-    showModalBottomSheet(context: context,
-      backgroundColor: Colors.black,
-      builder: (context){
-        return Reviewloan(loan: loan);
-      }
-    );
+  void _showLoanDetail(BuildContext context, Loan loan) {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.black,
+        builder: (context) {
+          return Reviewloan(loan: loan);
+        });
   }
 }
 
@@ -195,4 +203,3 @@ class ReturnedFilter extends SingleFilter<String> {
     return ["Devuelto", "Pendiente"];
   }
 }
-

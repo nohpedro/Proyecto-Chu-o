@@ -42,23 +42,23 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
       }) async {
 
     if(name.isEmpty){
-      SessionManager().errorNotification(error: "Se requiere el nombre del Item");
+      SessionManager().errorNotification(error: "Se requiere el nombre para la conferencia");
       return;
     }
     if(description.isEmpty){
-      SessionManager().errorNotification(error: "Se requiere una descripción del Item");
+      SessionManager().errorNotification(error: "Se requiere una descripción para la conferencia");
       return;
     }
     if(serialNumber.isEmpty){
-      SessionManager().errorNotification(error: "Se requiere el código serial del Item");
+      SessionManager().errorNotification(error: "Se requiere el código serial de zoom para la conferencia");
       return;
     }
     if(quantity.isEmpty){
-      SessionManager().errorNotification(error: "Se requiere la cantidad del Item");
+      SessionManager().errorNotification(error: "Se requiere la cantidad de ayudantes para la conferencia");
       return;
     }
     if(brand == null){
-      SessionManager().errorNotification(error: "Se requiere especificar la marca");
+      SessionManager().errorNotification(error: "Se requiere especificar la categoria");
       return;
     }
 
